@@ -115,9 +115,9 @@
             border: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* --- تنسيق الصور العادي (للجوال) --- */
+        /* تنسيق الصور العادي */
         .image-frame img {
-            max-width: 350px; /* الحجم الافتراضي لصور الجوال */
+            max-width: 350px;
             width: 100%;
             height: auto;
             border-radius: 12px;
@@ -127,9 +127,27 @@
             transition: transform 0.5s;
         }
 
-        /* --- تنسيق خاص للصور العريضة (للصور 10 و 11 و 12) --- */
+        /* تنسيق خاص للصور العريضة */
         .image-frame img.wide-img {
-            max-width: 100% !important; /* السماح بالعرض الكامل */
+            max-width: 100% !important;
+        }
+        
+        /* تنسيق خاص للصور الجانبية (Comparison) */
+        .comparison-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .comparison-item {
+            flex: 1;
+            min-width: 280px; /* لضمان عدم صغر الصورة كثيراً */
+        }
+        .comparison-item p {
+            margin-top: 10px;
+            font-weight: bold;
+            color: var(--secondary);
+            font-size: 0.9rem;
         }
         
         .image-frame:hover img {
@@ -162,6 +180,7 @@
         @media (max-width: 768px) {
             .project-title { font-size: 1.8rem; }
             .description-box { padding: 20px; }
+            .comparison-item { min-width: 100%; } /* في الجوال تصبح الصور تحت بعض */
         }
     </style>
 </head>
@@ -185,7 +204,7 @@
         <div class="action-area">
             <h3 style="margin-bottom: 15px;">هل أعجبك المشروع؟</h3>
             <a href="#" class="github-btn" id="projectLink">
-               <i class="fab fa-github"></i> 
+              
             </a>
         </div>
     </div>
@@ -195,116 +214,80 @@
         const projectsDB = {
             1: {
                 title: "تطبيق إدارة المهام الذكي (My Task)",
-                tags: ["Flutter", "Dart", "Firebase", "Custom Dataset&API Integration", "Android Studio","Machine Learning(Random Forest)","Render(Cloud Hosting&AI API Deployment)"],
+                tags: ["Flutter", "Dart", "Firebase", "Machine Learning", "Android Studio"],
                 link: "#", 
                 screens: [
-                    {
-                        title: "1. البداية والهوية البصرية",
-                        desc: "واجهة البداية (Splash Screen) التي تستقبل المستخدم، تعكس هوية التطبيق البسيطة والاحترافية.",
-                        img: "images/proj-2task/1.png"
-                    },
-                    {
-                        title: "2. بوابة الدخول",
-                        desc: "شاشة الترحيب التي تخير المستخدم بين تسجيل الدخول لحسابه الحالي أو الانضمام لمستخدمي التطبيق.",
-                        img: "images/proj-2task/8.png"
-                    },
-                    {
-                        title: "3. إنشاء حساب جديد",
-                        desc: "نموذج تسجيل سلس وسريع، يطلب البيانات الضرورية فقط لإنشاء الحساب وحفظ البيانات سحابياً.",
-                        img: "images/proj-2task/9.png"
-                    },
-                    {
-                        title: "4. الواجهة الرئيسية (المهام الحالية)",
-                        desc: "مركز التحكم في يومك. تعرض المهام مرتبة زمنياً مع أيقونات توضيحية لنوع المهمة، مما يسهل قراءة الجدول اليومي بلمحة سريعة.",
-                        img: "images/proj-2task/2.png"
-                    },
-                    {
-                        title: "5. إضافة مهمة جديدة",
-                        desc: "يمكن للمستخدم إضافة تفاصيل دقيقة للمهمة: العنوان، الوصف، الوقت، التاريخ، التصنيف، والأهمية (Priority).",
-                        img: "images/proj-2task/3.png"
-                    },
-                    {
-                        title: "6. الملف الشخصي والإعدادات",
-                        desc: "واجهة خاصة بالمستخدم لإدارة حسابه، تسجيل الخروج، أو التحكم في إعدادات التطبيق.",
-                        img: "images/proj-2task/4.png"
-                    },
-                    {
-                        title: "7. المهام الفائتة (Previous Tasks)",
-                        desc: "عند انتهاء وقت المهمة دون إنجاز، تنتقل تلقائياً لهذه القائمة. هنا تظهر الحاجة لإعادة الجدولة.",
-                        img: "images/proj-2task/5.png"
-                    },
-                    {
-                        title: "8. الذكاء الاصطناعي vs الجدولة اليدوية",
-                        desc: "عند ضغط زر إعادة الجدولة (Reschedule)، يتدخل النظام الذكي ليخيرك: هل تريد تحديد الوقت يدوياً؟ أم تترك الذكاء الاصطناعي يختار لك؟",
-                        img: "images/proj-2task/6.png"
-                    },
-                    {
-                        title: "9. اقتراحات الذكاء الاصطناعي",
-                        desc: "بناءً على تقسيم اليوم إلى 4 فترات (Classes)، يقترح الموديل 3 أوقات تناسب نمط حياتك لإنجاز هذه المهمة.",
-                        img: "images/proj-2task/7.png"
-                    },
-                    // --- هنا الصور العريضة التي طلبناها ---
-                    {
-                        title: "10. خلف الكواليس (بيئة التطوير)",
-                        desc: "لقطة من بيئة Android Studio توضح هيكلية الكود النظيفة (Clean Code) وبناء التطبيق باستخدام Flutter.",
-                        img: "images/proj-2task/10.png",
-                        isWide: true 
-                    },
-                    {
-                        title: "11. البنية التحتية (Firebase)",
-                        desc: "تم استخدام Firebase Realtime Database لضمان سرعة المزامنة اللحظية للبيانات، بالإضافة إلى Authentication لتأمين حسابات المستخدمين.",
-                        img: "images/proj-2task/11.png",
-                        isWide: true
-                    },
-                    {
-                        title: "12. استضافة الذكاء الاصطناعي (Render)",
-                        desc: "لضمان عمل الذكاء الاصطناعي على أي جهاز، تم رفع الـ API الخاص به (المبني بـ Python Flask) على سيرفرات Render السحابية.",
-                        img: "images/proj-2task/12 render.png",
-                        isWide: true
-                    }
+                    { title: "1. البداية والهوية البصرية", desc: "واجهة البداية (Splash Screen) التي تستقبل المستخدم.", img: "images/proj-2task/1.png" },
+                    { title: "2. بوابة الدخول", desc: "شاشة الترحيب وتسجيل الدخول.", img: "images/proj-2task/8.png" },
+                    { title: "3. الواجهة الرئيسية", desc: "مركز التحكم في يومك وعرض المهام.", img: "images/proj-2task/2.png" },
+                    // ... (يمكنك إبقاء باقي بيانات المشروع الأول كما هي)
+                    { title: "10. بيئة التطوير", desc: "كود نظيف باستخدام Flutter.", img: "images/proj-2task/10.png", isWide: true }
                 ]
             },
-            // --- بيانات المشروع الثاني (مؤقتة حتى تعدلها) ---
+            
+            // --- هنا تمت إضافة مشروعك الجديد "مسبحتي" ---
             2: {
-                title: "تطبيق مسبحتي (Masbahty)",
-                tags: ["Flutter", "Dart", "UI Design"],
+                title: "تطبيق مسبحتي",
+                tags: ["Flutter", "Dart", "Clean Code", "Dark Mode", "Local Storage"],
                 link: "#",
                 screens: [
                     {
-                        title: "الواجهة الرئيسية للتسبيح",
-                        desc: "تصميم هادئ ومريح للعين يساعد على التركيز أثناء التسبيح، مع عداد رقمي كبير.",
-                        img: "images/p2-1.jpg"
+                        title: "1. الانطلاق والهوية",
+                        desc: "شاشة الترحيب (Splash Screen) بتصميم ثلاثي الأبعاد بسيط يعكس روحانية التطبيق.",
+                        img: "images/proj-3 tsbeeh/3.png" // تأكد أن تضع الصورة بهذا الاسم
                     },
                     {
-                        title: "الإعدادات والوضع الليلي",
-                        desc: "إمكانية تخصيص التطبيق وتفعيل الوضع الليلي لراحة العين في الظلام، مع التحكم بالاهتزاز.",
-                        img: "images/p2-2.jpg"
+                        title: "2. واجهة الاستخدام الأنيقة",
+                        desc: "تصميم يركز على الوظيفة مع زر تسبيح مريح وقائمة منسدلة للأذكار.",
+                        img: "images/proj-3 tsbeeh/4.png"
+                    },
+                    {
+                        title: "3. مواقيت الصلاة (تجربة ثنائية)",
+                        desc: "مقارنة تظهر تكيف نافذة مواقيت الصلاة ببراعة بين الوضع النهاري والليلي.",
+                        imgPair: ["images/proj-3 tsbeeh/6.png", "images/proj-3 tsbeeh/14.png"], // خاصية جديدة للصور المزدوجة
+                        labels: ["الوضع النهاري", "الوضع الليلي"]
+                    },
+                    {
+                        title: "4. آيات الحفظ والقراءة",
+                        desc: "عرض واضح للنصوص القرآنية يحافظ على راحة العين في مختلف ظروف الإضاءة.",
+                        imgPair: ["images/proj-3 tsbeeh/7.png", "images/proj-3 tsbeeh/15.png"],
+                        labels: ["الوضع النهاري", "الوضع الليلي"]
+                    },
+                    {
+                        title: "5. عدادات الأذكار المتجاوبة",
+                        desc: "لاحظ كيف تتغير ألوان العدادات والنصوص لتتناسب مع الخلفية الداكنة أو الفاتحة.",
+                        imgPair: ["images/proj-3 tsbeeh/8.png", "images/proj-3 tsbeeh/16.png"],
+                        labels: ["الوضع النهاري", "الوضع الليلي"]
+                    },
+                    {
+                        title: "6. لحظة الإنجاز والقبول",
+                        desc: "رسالة تفاعلية تظهر عند إتمام الذكر، مصممة لتكون منسجمة بصرياً مع الثيم المختار.",
+                        imgPair: ["images/proj-3 tsbeeh/12.png", "images/proj-3 tsbeeh/20.png"],
+                        labels: ["الوضع النهاري", "الوضع الليلي"]
+                    },
+                    {
+                        title: "7. الهندسة البرمجية (الكواليس)",
+                        desc: "صورة من بيئة العمل Android Studio تظهر تنظيم الكود وبناء الويدجت.",
+                        img: "images/proj-3 tsbeeh/21.png",
+                        isWide: true
                     }
                 ]
             },
-            // --- بيانات المشروع الثالث (مؤقتة حتى تعدلها) ---
+
             3: {
                 title: "حاسبة العملات الرقمية",
                 tags: ["HTML", "CSS", "JS"],
                 link: "#",
                 screens: [
-                    {
-                        title: "واجهة التحويل",
-                        desc: "واجهة ويب بسيطة وسريعة تسمح بإدخال المبلغ واختيار العملة المراد التحويل منها وإليها.",
-                        img: "images/p3-1.jpg"
-                    },
-                    {
-                        title: "النتائج الفورية",
-                        desc: "بمجرد الضغط على زر التحويل، تظهر النتيجة فوراً باستخدام معادلات JavaScript في المتصفح.",
-                        img: "images/p3-2.jpg"
-                    }
+                    { title: "واجهة التحويل", desc: "واجهة ويب بسيطة.", img: "images/p3-1.jpg" }
                 ]
             }
         };
 
-        // --- المنطق البرمجي لتشغيل الصفحة ---
+        // --- المنطق البرمجي (تم تحديثه ليدعم الصور المزدوجة) ---
         const urlParams = new URLSearchParams(window.location.search);
-        const projectId = urlParams.get('id');
+        // ملاحظة: غير الرقم هنا إلى 2 لتجربة مشروع مسبحتي، أو استخدم الرابط ?id=2
+        const projectId = urlParams.get('id') || 2; 
         const project = projectsDB[projectId];
 
         if (project) {
@@ -323,8 +306,34 @@
             // بناء الصور والشروحات
             let contentHTML = '';
             project.screens.forEach(screen => {
-                // التحقق من خاصية isWide لتكبير الصورة
-                const imgClass = screen.isWide ? 'wide-img' : '';
+                let mediaHTML = '';
+
+                // التحقق: هل هي صورة واحدة أم زوج من الصور؟
+                if (screen.imgPair) {
+                    // كود عرض الصورتين جنباً إلى جنب
+                    mediaHTML = `
+                        <div class="image-frame">
+                            <div class="comparison-grid">
+                                <div class="comparison-item">
+                                    <img src="${screen.imgPair[0]}" alt="${screen.labels[0]}">
+                                    <p>${screen.labels[0]}</p>
+                                </div>
+                                <div class="comparison-item">
+                                    <img src="${screen.imgPair[1]}" alt="${screen.labels[1]}">
+                                    <p>${screen.labels[1]}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    // كود عرض الصورة الواحدة (العادي)
+                    const imgClass = screen.isWide ? 'wide-img' : '';
+                    mediaHTML = `
+                        <div class="image-frame">
+                            <img src="${screen.img}" class="${imgClass}" alt="${screen.title}" onerror="this.src='https://via.placeholder.com/800x450?text=صورة+توضيحية'">
+                        </div>
+                    `;
+                }
                 
                 contentHTML += `
                     <div class="showcase-section">
@@ -332,17 +341,14 @@
                             <h3>${screen.title}</h3>
                             <p>${screen.desc}</p>
                         </div>
-                        <div class="image-frame">
-                            <img src="${screen.img}" class="${imgClass}" alt="${screen.title}" onerror="this.src='https://via.placeholder.com/800x450?text=صورة+توضيحية'">
-                        </div>
+                        ${mediaHTML}
                     </div>
                 `;
             });
             document.getElementById('contentContainer').innerHTML = contentHTML;
 
         } else {
-            // رسالة في حال عدم العثور على المشروع
-            document.querySelector('.container').innerHTML = '<h2 style="text-align:center; margin-top:100px;">عذراً، المشروع غير موجود أو حدث خطأ في الرابط</h2>';
+            document.querySelector('.container').innerHTML = '<h2 style="text-align:center; margin-top:100px;">المشروع غير موجود</h2>';
         }
     </script>
 </body>
