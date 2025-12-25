@@ -214,14 +214,73 @@
         const projectsDB = {
             1: {
                 title: "تطبيق إدارة المهام الذكي (My Task)",
-                tags: ["Flutter", "Dart", "Firebase", "Machine Learning", "Android Studio"],
+                tags: ["Flutter", "Dart", "Firebase", "Custom Dataset&API Integration", "Android Studio","Machine Learning(Random Forest)","Render(Cloud Hosting&AI API Deployment)"],
                 link: "#", 
                 screens: [
-                    { title: "1. البداية والهوية البصرية", desc: "واجهة البداية (Splash Screen) التي تستقبل المستخدم.", img: "images/proj-2task/1.png" },
-                    { title: "2. بوابة الدخول", desc: "شاشة الترحيب وتسجيل الدخول.", img: "images/proj-2task/8.png" },
-                    { title: "3. الواجهة الرئيسية", desc: "مركز التحكم في يومك وعرض المهام.", img: "images/proj-2task/2.png" },
-                    // ... (يمكنك إبقاء باقي بيانات المشروع الأول كما هي)
-                    { title: "10. بيئة التطوير", desc: "كود نظيف باستخدام Flutter.", img: "images/proj-2task/10.png", isWide: true }
+                    {
+                        title: "1. البداية والهوية البصرية",
+                        desc: "واجهة البداية (Splash Screen) التي تستقبل المستخدم، تعكس هوية التطبيق البسيطة والاحترافية.",
+                        img: "images/proj-2task/1.png"
+                    },
+                    {
+                        title: "2. بوابة الدخول",
+                        desc: "شاشة الترحيب التي تخير المستخدم بين تسجيل الدخول لحسابه الحالي أو الانضمام لمستخدمي التطبيق.",
+                        img: "images/proj-2task/8.png"
+                    },
+                    {
+                        title: "3. إنشاء حساب جديد",
+                        desc: "نموذج تسجيل سلس وسريع، يطلب البيانات الضرورية فقط لإنشاء الحساب وحفظ البيانات سحابياً.",
+                        img: "images/proj-2task/9.png"
+                    },
+                    {
+                        title: "4. الواجهة الرئيسية (المهام الحالية)",
+                        desc: "مركز التحكم في يومك. تعرض المهام مرتبة زمنياً مع أيقونات توضيحية لنوع المهمة، مما يسهل قراءة الجدول اليومي بلمحة سريعة.",
+                        img: "images/proj-2task/2.png"
+                    },
+                    {
+                        title: "5. إضافة مهمة جديدة",
+                        desc: "يمكن للمستخدم إضافة تفاصيل دقيقة للمهمة: العنوان، الوصف، الوقت، التاريخ، التصنيف، والأهمية (Priority).",
+                        img: "images/proj-2task/3.png"
+                    },
+                    {
+                        title: "6. الملف الشخصي والإعدادات",
+                        desc: "واجهة خاصة بالمستخدم لإدارة حسابه، تسجيل الخروج، أو التحكم في إعدادات التطبيق.",
+                        img: "images/proj-2task/4.png"
+                    },
+                    {
+                        title: "7. المهام الفائتة (Previous Tasks)",
+                        desc: "عند انتهاء وقت المهمة دون إنجاز، تنتقل تلقائياً لهذه القائمة. هنا تظهر الحاجة لإعادة الجدولة.",
+                        img: "images/proj-2task/5.png"
+                    },
+                    {
+                        title: "8. الذكاء الاصطناعي vs الجدولة اليدوية",
+                        desc: "عند ضغط زر إعادة الجدولة (Reschedule)، يتدخل النظام الذكي ليخيرك: هل تريد تحديد الوقت يدوياً؟ أم تترك الذكاء الاصطناعي يختار لك؟",
+                        img: "images/proj-2task/6.png"
+                    },
+                    {
+                        title: "9. اقتراحات الذكاء الاصطناعي",
+                        desc: "بناءً على تقسيم اليوم إلى 4 فترات (Classes)، يقترح الموديل 3 أوقات تناسب نمط حياتك لإنجاز هذه المهمة.",
+                        img: "images/proj-2task/7.png"
+                    },
+                    // --- هنا الصور العريضة التي طلبناها ---
+                    {
+                        title: "10. خلف الكواليس (بيئة التطوير)",
+                        desc: "لقطة من بيئة Android Studio توضح هيكلية الكود النظيفة (Clean Code) وبناء التطبيق باستخدام Flutter.",
+                        img: "images/proj-2task/10.png",
+                        isWide: true 
+                    },
+                    {
+                        title: "11. البنية التحتية (Firebase)",
+                        desc: "تم استخدام Firebase Realtime Database لضمان سرعة المزامنة اللحظية للبيانات، بالإضافة إلى Authentication لتأمين حسابات المستخدمين.",
+                        img: "images/proj-2task/11.png",
+                        isWide: true
+                    },
+                    {
+                        title: "12. استضافة الذكاء الاصطناعي (Render)",
+                        desc: "لضمان عمل الذكاء الاصطناعي على أي جهاز، تم رفع الـ API الخاص به (المبني بـ Python Flask) على سيرفرات Render السحابية.",
+                        img: "images/proj-2task/12 render.png",
+                        isWide: true
+                    }
                 ]
             },
             
@@ -374,3 +433,4 @@
     </script>
 </body>
 </html>
+
