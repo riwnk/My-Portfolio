@@ -275,16 +275,36 @@
                 ]
             },
 
+           // --- المشروع الثالث: حاسبة العملات (الجديد) ---
             3: {
-                title: "حاسبة العملات الرقمية",
-                tags: ["HTML", "CSS", "JS"],
-                link: "#",
+                title: "حاسبة العملات (Currency Converter)",
+                tags: ["HTML", "CSS", "JavaScript", "Responsive Design", "Math Logic"],
+                link: "#", // ضع رابط GitHub الخاص بهذا المشروع هنا
                 screens: [
-                    { title: "واجهة التحويل", desc: "واجهة ويب بسيطة.", img: "images/p3-1.jpg" }
+                    {
+                        title: "1. واجهة سطح المكتب (Desktop View)",
+                        desc: "تصميم متجاوب يستفيد من المساحات العريضة، مع خلفية احترافية تعبر عن المال والأعمال.",
+                        img: "images/proj-1 curr/1.png",
+                        isWide: true // جعلنا الصورة عريضة لتناسب الديسك توب
+                    },
+                    {
+                        title: "2. واجهة الجوال (Mobile View)",
+                        desc: "هنا يظهر سحر التجاوب (Responsiveness) تعيد العناصر ترتيب نفسها لتناسب الشاشات الطولية بسلاسة تامة.",
+                        img: "images/proj-1 curr/4.png"
+                    },
+                    {
+                        title: "3. تجربة المستخدم (UI Interaction)",
+                        desc: "قوائم منسدلة تفاعلية تتيح للمستخدم اختيار العملات بسهولة ووضوح.",
+                        img: "images/proj-1 curr/2.png"
+                    },
+                    {
+                        title: "4. المحرك المنطقي (Logic & Calculation)",
+                        desc: "بمجرد الإدخال، يقوم كود JavaScript بحساب الفرق (مثلاً تحويل الدولار للريال) وعرض النتيجة وسعر الصرف فوراً.",
+                        img: "images/proj-1 curr/3.png"
+                    }
                 ]
             }
         };
-
         // --- المنطق البرمجي (تم تحديثه ليدعم الصور المزدوجة) ---
         const urlParams = new URLSearchParams(window.location.search);
         // ملاحظة: غير الرقم هنا إلى 2 لتجربة مشروع مسبحتي، أو استخدم الرابط ?id=2
